@@ -1,0 +1,360 @@
+<!DOCTYPE html><html class="light" lang="de" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>How2CareerAI | Finde deinen beruflichen Weg</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#abd0ab",
+                    "on-tertiary-fixed": "#002021",
+                    "on-secondary-container": "#7a532a",
+                    "outline-variant": "#c2c8bf",
+                    "on-surface-variant": "#424841",
+                    "surface-variant": "#e4e2de",
+                    "surface-dim": "#dbdad6",
+                    "secondary-container": "#ffca98",
+                    "tertiary-container": "#537c7d",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#234d4e",
+                    "secondary-fixed": "#ffdcbd",
+                    "inverse-primary": "#abd0ab",
+                    "primary": "#426446",
+                    "outline": "#727971",
+                    "inverse-on-surface": "#f2f0ed",
+                    "primary-container": "#5a7d5d",
+                    "surface-bright": "#fbf9f5",
+                    "tertiary": "#3a6364",
+                    "on-primary-container": "#f7fff2",
+                    "on-primary-fixed-variant": "#2d4e32",
+                    "on-primary": "#ffffff",
+                    "surface": "#fbf9f5",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#a4cecf",
+                    "secondary": "#7d562d",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#c6ecc6",
+                    "secondary-fixed-dim": "#f0bd8b",
+                    "surface-container-low": "#f5f3ef",
+                    "on-surface": "#1b1c1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "container-max": "1120px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .organic-blob {
+            position: absolute;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .chat-scroll::-webkit-scrollbar { width: 4px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background: #abd0ab; border-radius: 10px; }
+        .transition-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .transition-lift:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-surface/80 backdrop-blur-md dark:bg-surface/80">
+<div class="flex justify-between items-center w-full px-md md:px-xl py-base max-w-container-max mx-auto">
+<a class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim flex items-center gap-2" href="#">
+<span class="">🤝</span>
+<span class="">HowToCareerAI</span>
+</a>
+<div class="hidden md:flex items-center gap-md">
+<a class="text-primary dark:text-primary-fixed-dim font-semibold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#hero">Start</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#how-it-works">So funktioniert's</a>
+<a class="bg-primary text-on-primary px-md py-base rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all" href="#chat">Chat starten</a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
+</button>
+</div>
+</nav>
+<main class="overflow-x-hidden">
+<!-- Background Blobs -->
+<div class="organic-blob bg-primary-fixed w-[400px] h-[400px] -top-20 -left-20"></div>
+<div class="organic-blob bg-secondary-fixed w-[300px] h-[300px] top-1/2 -right-20"></div>
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-md md:px-xl py-xl grid grid-cols-1 md:grid-cols-2 gap-xl items-center min-h-[819px]" id="hero">
+<div class="space-y-md">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                    Finde heraus, welcher Beruf zu dir passt.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[540px]">
+                    Sprich mit einem KI-Berufsberater über deine Interessen, Werte, Stärken und nächsten Schritte.
+                </p>
+<div class="flex flex-wrap gap-md pt-base">
+<a class="bg-primary text-on-primary px-lg py-md rounded-full font-label-md text-label-md transition-lift shadow-sm flex items-center gap-2" href="#chat">
+                        Chat starten
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="bg-secondary-fixed text-secondary px-lg py-md rounded-full font-label-md text-label-md transition-lift" href="#how-it-works">
+                        So funktioniert's
+                    </a>
+</div>
+</div>
+<!-- Interactive Chatbot Preview -->
+<div class="relative" id="chat">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-[24px] shadow-xl overflow-hidden flex flex-col h-[520px]">
+<!-- Chat Header -->
+<div class="bg-primary-container/10 px-md py-md flex items-center gap-md border-b border-outline-variant/20">
+<div class="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">KI-Berufsberater</p>
+<p class="text-[12px] text-primary/70">Online &amp; Hilfsbereit</p>
+</div>
+</div>
+<!-- Chat Messages -->
+<div class="flex-1 overflow-y-auto p-md space-y-md chat-scroll" id="chat-messages">
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md">
+                                Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.
+                            </div>
+</div>
+</div>
+<!-- Suggested Chips -->
+<div class="px-md py-sm flex flex-wrap gap-xs" id="suggested-chips">
+<button class="px-md py-xs border border-primary text-primary text-[13px] rounded-full hover:bg-primary hover:text-on-primary transition-all" onclick="sendPredefined('Ich weiß nicht, welcher Beruf zu mir passt.')">
+                            Welcher Beruf passt?
+                        </button>
+<button class="px-md py-xs border border-primary text-primary text-[13px] rounded-full hover:bg-primary hover:text-on-primary transition-all" onclick="sendPredefined('Ich möchte über meine Stärken sprechen.')">
+                            Stärken erkennen
+                        </button>
+<button class="px-md py-xs border border-primary text-primary text-[13px] rounded-full hover:bg-primary hover:text-on-primary transition-all" onclick="sendPredefined('Ich brauche Hilfe bei den nächsten Schritten.')">
+                            Nächste Schritte
+                        </button>
+</div>
+<!-- Input Area -->
+<div class="p-md border-t border-outline-variant/20 bg-surface-container-low">
+<div class="flex gap-sm items-center bg-surface border border-outline-variant rounded-full px-md h-14 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline" id="chat-input" placeholder="Schreibe deine Frage..." type="text">
+<button class="text-primary hover:scale-110 transition-transform" onclick="sendMessage()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Info Section -->
+<section class="max-w-container-max mx-auto px-md md:px-xl py-xl" id="how-it-works">
+<div class="text-center space-y-sm mb-xl">
+<span class="text-primary font-bold tracking-widest text-label-sm uppercase">Der Prozess</span>
+<h2 class="font-headline-md text-headline-md md:text-[36px] text-on-surface">So funktioniert's</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-low p-lg rounded-[24px] border border-outline-variant/30 transition-lift">
+<div class="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center mb-md text-secondary">
+<span class="material-symbols-outlined" style="font-size: 28px;">chat_bubble</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Erzähle von dir</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">
+                        Teile deine Interessen, Hobbys und persönlichen Werte. Der Chatbot hört zu und stellt gezielte Fragen.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low p-lg rounded-[24px] border border-outline-variant/30 transition-lift">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center mb-md text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">lightbulb</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Reflektiere Möglichkeiten</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">
+                        Entdecke Berufsfelder, die wirklich zu deiner Persönlichkeit passen, statt nur Trends zu folgen.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low p-lg rounded-[24px] border border-outline-variant/30 transition-lift">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-xl flex items-center justify-center mb-md text-tertiary">
+<span class="material-symbols-outlined" style="font-size: 28px;">route</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Plane den nächsten Schritt</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">
+                        Ob Praktikum, Ausbildung oder Studium – erhalte konkrete Tipps für deine ersten Schritte in die Praxis.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Feature Section -->
+<section class="bg-surface-variant/30 py-xl">
+<div class="max-w-container-max mx-auto px-md md:px-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-display-lg-mobile md:font-headline-md text-display-lg-mobile md:text-[40px] text-on-surface mb-lg">
+                            Wobei dir der Chatbot helfen kann
+                        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="bg-surface p-md rounded-xl border border-outline-variant/20 flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">search</span>
+<span class="font-label-md text-label-md">Interessen entdecken</span>
+</div>
+<div class="bg-surface p-md rounded-xl border border-outline-variant/20 flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+<span class="font-label-md text-label-md">Stärken erkennen</span>
+</div>
+<div class="bg-surface p-md rounded-xl border border-outline-variant/20 flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">work</span>
+<span class="font-label-md text-label-md">Berufsfelder kennenlernen</span>
+</div>
+<div class="bg-surface p-md rounded-xl border border-outline-variant/20 flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-label-md text-label-md">Nächste Schritte planen</span>
+</div>
+</div>
+</div>
+<div class="rounded-3xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover aspect-video md:aspect-square" data-alt="A diverse group of young adults sitting together in a bright, modern minimalist co-working space with large windows and soft natural lighting. They are engaged in calm, thoughtful conversation, looking at laptops and notebooks, embodying a supportive and collaborative atmosphere. The aesthetic is light-mode with sage greens and warm cream tones throughout the decor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7OtUzhaWLRKYQ-3ZHEhWyBP_P_FADi7XA4TIkkFQhegljGmtItyfVTVrUjvy_WIJbNrH6EGoieJJGAUVdw0_PtDXjKc3S5YEwAL_-J-B9W438XlycGtPYQPUhRtQD5e_rg8KNXN78-kI9iOH0nhaaxng5O_cq-o0ZOtT_XHNfCcPxFosLw4bZhgaGXF5ERf9eEmOhXeSh4LFwOVZ6bu6QIEVHcL6g9ESjphfSw38pXXF5ym5MzRMX-1e149EhOkS0VTFHGGEh8ck">
+</div>
+</div>
+</div>
+</section>
+<!-- Quote / Peace Section -->
+<section class="max-w-container-max mx-auto px-md md:px-xl py-xl text-center">
+<div class="max-w-[800px] mx-auto space-y-md">
+<span class="material-symbols-outlined text-primary" style="font-size: 48px;">format_quote</span>
+<p class="font-headline-md text-headline-md text-on-surface italic">
+                    "Die wichtigste Reise deines Lebens beginnt mit der Frage nach dem Warum. Wir helfen dir, die Antwort zu finden."
+                </p>
+<p class="font-label-md text-label-md text-primary uppercase font-bold">HOWTOCAREERAI MENTOR</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/30 dark:border-outline/20 py-lg">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-md md:px-xl max-w-container-max mx-auto gap-md">
+<div class="flex flex-col gap-sm text-center md:text-left">
+<p class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim">HowToCareerAI</p>
+<p class="max-w-[400px] font-label-sm text-label-sm text-on-surface-variant italic">
+                    Die Beratung ersetzt keine professionelle Berufsberatung, kann dir aber helfen, Gedanken zu sortieren und erste Ideen zu entwickeln.
+                </p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-sm">
+<div class="flex gap-md font-label-sm text-label-sm">
+<a class="text-on-surface-variant hover:text-primary underline transition-all" href="#">Datenschutz</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all" href="#">Impressum</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all" href="#">Kontakt</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">© 2024 HowToCareerAI. Weise Begleitung f#252;r deinen beruflichen Weg.</p>
+</div>
+</div>
+</footer>
+<!-- Chat Logic -->
+<script>
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const suggestedChips = document.getElementById('suggested-chips');
+
+        function appendMessage(text, isUser = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = isUser 
+                ? 'bg-secondary-fixed text-on-secondary-container p-md rounded-[16px] rounded-tr-none font-body-md text-body-md shadow-sm' 
+                : 'bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md border border-outline-variant/10';
+            
+            bubble.innerText = text;
+            wrapper.appendChild(bubble);
+            chatMessages.appendChild(wrapper);
+            
+            // Scroll to bottom
+            chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+        }
+
+        function botResponse(userText) {
+            setTimeout(() => {
+                const responses = [
+                    "Das ist ein spannendes Thema! Lass uns gemeinsam schauen, was dich antreibt und welche Berufe dazu passen könnten.",
+                    "Ein wichtiger erster Schritt! Hast du schon einmal darüber nachgedacht, wie deine Hobbys vielleicht zu einem Job passen könnten?",
+                    "Verständlich, dass dich das beschäftigt. Lass uns mal auflisten, was du bisher am liebsten gemacht hast.",
+                    "Ich unterstütze dich gerne dabei. Welche Stärken würdest du dir selbst zuschreiben?"
+                ];
+                const randomResp = responses[Math.floor(Math.random() * responses.length)];
+                appendMessage(randomResp, false);
+            }, 600);
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (text) {
+                appendMessage(text, true);
+                chatInput.value = '';
+                botResponse(text);
+                suggestedChips.style.opacity = '0.5';
+                suggestedChips.style.pointerEvents = 'none';
+            }
+        }
+
+        function sendPredefined(text) {
+            appendMessage(text, true);
+            botResponse(text);
+            suggestedChips.style.opacity = '0.5';
+            suggestedChips.style.pointerEvents = 'none';
+        }
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+
+
+</body></html>
