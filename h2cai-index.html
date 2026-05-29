@@ -92,14 +92,6 @@
       }
     </script>
 <style>
-      .nav-link {
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.nav-link.active-nav {
-  color: #426446;
-  border-bottom-color: #426446;
-}
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
@@ -127,10 +119,8 @@
 <span class="">HowToCareerAI</span>
 </a>
 <div class="hidden md:flex items-center gap-md">
-<a class="nav-link active-nav text-primary dark:text-primary-fixed-dim font-semibold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#hero" onclick="setActiveNav(this)">Start</a>
-
-<a class="nav-link text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md border-b-2 border-transparent pb-1" href="#how-it-works" onclick="setActiveNav(this)">So funktioniert's</a>
-
+<a class="text-primary dark:text-primary-fixed-dim font-semibold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#hero">Start</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#how-it-works">So funktioniert's</a>
 <a class="bg-primary text-on-primary px-md py-base rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all" href="#chat">Chat starten</a>
 </div>
 <button class="md:hidden text-primary">
@@ -382,17 +372,6 @@
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
         });
-      function setActiveNav(clickedLink) {
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.remove('active-nav');
-    link.classList.remove('text-primary', 'dark:text-primary-fixed-dim', 'font-semibold', 'border-primary');
-    link.classList.add('text-on-surface-variant', 'dark:text-outline-variant', 'border-transparent');
-  });
-
-  clickedLink.classList.add('active-nav');
-  clickedLink.classList.add('text-primary', 'dark:text-primary-fixed-dim', 'font-semibold', 'border-primary');
-  clickedLink.classList.remove('text-on-surface-variant', 'dark:text-outline-variant', 'border-transparent');
-}
     </script>
 
 
