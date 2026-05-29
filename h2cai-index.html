@@ -133,10 +133,10 @@
 <div class="organic-blob bg-primary-fixed w-[400px] h-[400px] -top-20 -left-20"></div>
 <div class="organic-blob bg-secondary-fixed w-[300px] h-[300px] top-1/2 -right-20"></div>
 <!-- Hero Section -->
-<section class="max-w-[1400px] mx-auto px-md md:px-xl py-xl flex flex-col items-center text-center" id="hero">
+<section class="max-w-[1200px] mx-auto px-md md:px-xl py-xl min-h-[900px] flex flex-col items-center" id="hero">
 
   <!-- Hero Text oben -->
-  <div class="max-w-[900px] mx-auto mb-lg">
+  <div class="text-center max-w-[900px] mx-auto mb-lg">
     <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
       Finde heraus, welcher Beruf zu dir passt.
     </h1>
@@ -144,22 +144,11 @@
     <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[760px] mx-auto mt-md">
       Sprich mit einem KI-Berufsberater über deine Interessen, Werte, Stärken und nächsten Schritte.
     </p>
-
-    <div class="flex justify-center flex-wrap gap-md pt-md">
-      <a class="bg-primary text-on-primary px-lg py-md rounded-full font-label-md text-label-md transition-lift shadow-sm flex items-center gap-2" href="#chat">
-        Chat starten
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-
-      <a class="bg-secondary-fixed text-secondary px-lg py-md rounded-full font-label-md text-label-md transition-lift" href="#how-it-works">
-        So funktioniert's
-      </a>
-    </div>
   </div>
 
-  <!-- Horizontaler großer Chatbot -->
-  <div class="relative w-full max-w-[1100px]" id="chat">
-    <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-[24px] shadow-xl overflow-hidden flex flex-col h-[620px] w-full">
+  <!-- Großer Chatbot mittig -->
+  <div class="relative w-full max-w-[900px]" id="chat">
+    <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-[24px] shadow-xl overflow-hidden flex flex-col h-[680px] md:h-[760px]">
 
       <!-- Chat Header -->
       <div class="bg-primary-container/10 px-md py-md flex items-center gap-md border-b border-outline-variant/20">
@@ -167,14 +156,14 @@
           <span class="material-symbols-outlined">smart_toy</span>
         </div>
 
-        <div class="text-left">
+        <div>
           <p class="font-label-md text-label-md text-on-surface font-bold">KI-Berufsberater</p>
           <p class="text-[12px] text-primary/70">Online &amp; Hilfsbereit</p>
         </div>
       </div>
 
       <!-- Chat Messages -->
-      <div class="flex-1 overflow-y-auto p-md space-y-md chat-scroll text-left" id="chat-messages">
+      <div class="flex-1 overflow-y-auto p-md space-y-md chat-scroll" id="chat-messages">
         <div class="flex flex-col items-start max-w-[85%]">
           <div class="bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md">
             Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.
@@ -183,7 +172,7 @@
       </div>
 
       <!-- Suggested Chips -->
-      <div class="px-md py-sm flex justify-center flex-wrap gap-xs" id="suggested-chips">
+      <div class="px-md py-sm flex flex-wrap gap-xs" id="suggested-chips">
         <button class="px-md py-xs border border-primary text-primary text-[13px] rounded-full hover:bg-primary hover:text-on-primary transition-all" onclick="sendPredefined('Ich weiß nicht, welcher Beruf zu mir passt.')">
           Welcher Beruf passt?
         </button>
@@ -200,7 +189,7 @@
       <!-- Input Area -->
       <div class="p-md border-t border-outline-variant/20 bg-surface-container-low">
         <div class="flex gap-sm items-center bg-surface border border-outline-variant rounded-full px-md h-14 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-          <input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline text-left" id="chat-input" placeholder="Schreibe deine Frage..." type="text">
+          <input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline" id="chat-input" placeholder="Schreibe deine Frage..." type="text">
 
           <button class="text-primary hover:scale-110 transition-transform" onclick="sendMessage()">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
