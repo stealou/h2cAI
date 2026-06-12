@@ -327,18 +327,30 @@
             chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
         }
 
-        function botResponse(userText) {
-            setTimeout(() => {
-                const responses = [
-                    "Das ist ein spannendes Thema! Lass uns gemeinsam schauen, was dich antreibt und welche Berufe dazu passen könnten.",
-                    "Ein wichtiger erster Schritt! Hast du schon einmal darüber nachgedacht, wie deine Hobbys vielleicht zu einem Job passen könnten?",
-                    "Verständlich, dass dich das beschäftigt. Lass uns mal auflisten, was du bisher am liebsten gemacht hast.",
-                    "Ich unterstütze dich gerne dabei. Welche Stärken würdest du dir selbst zuschreiben?"
-                ];
-                const randomResp = responses[Math.floor(Math.random() * responses.length)];
-                appendMessage(randomResp, false);
-            }, 600);
-        }
+      async function botResponse(userText) {
+  try {
+    const response = await fetch("https://how2cai-backend.onrender.com/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: userText
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.reply) {
+      appendMessage(data.reply, false);
+    } else {
+      appendMessage("Ich konnte gerade keine Antwort erstellen.", false);
+    }
+
+  } catch (error) {
+    appendMessage("Der KI-Chat ist gerade nicht erreichbar.", false);
+  }
+}
 
         function sendMessage() {
             const text = chatInput.value.trim();
