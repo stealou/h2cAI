@@ -305,98 +305,138 @@
 </div>
 </footer>
 <!-- Chat Logic -->
+
 <script>
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const suggestedChips = document.getElementById('suggested-chips');
-let conversationHistory = [];
-        function appendMessage(text, isUser = false) {
-            const wrapper = document.createElement('div');
-            wrapper.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
-            
-            const bubble = document.createElement('div');
-            bubble.className = isUser 
-                ? 'bg-secondary-fixed text-on-secondary-container p-md rounded-[16px] rounded-tr-none font-body-md text-body-md shadow-sm' 
-                : 'bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md border border-outline-variant/10';
-            
-            bubble.innerText = text;
-            wrapper.appendChild(bubble);
-            chatMessages.appendChild(wrapper);
-            
-            // Scroll to bottom
-            chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-        }
 
-    async function botResponse(userText) {
-  try {
-    conversationHistory.push({
-      role: "user",
-      content: userText
-    });
+  const chatMessages = document.getElementById('chat-messages');
 
-    const response = await fetch("https://how2cai-backend.onrender.com/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        messages: conversationHistory
-      })
-    });
+  const chatInput = document.getElementById('chat-input');
 
-    const data = await response.json();
+  const suggestedChips = document.getElementById('suggested-chips');
 
-    if (data.reply) {
+  let conversationHistory = [];
+
+  function appendMessage(text, isUser = false) {
+
+    const wrapper = document.createElement('div');
+
+    wrapper.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
+
+    const bubble = document.createElement('div');
+
+    bubble.className = isUser
+
+      ? 'bg-secondary-fixed text-on-secondary-container p-md rounded-[16px] rounded-tr-none font-body-md text-body-md shadow-sm'
+
+      : 'bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md border border-outline-variant/10';
+
+    bubble.innerText = text;
+
+    wrapper.appendChild(bubble);
+
+    chatMessages.appendChild(wrapper);
+
+    chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+
+  }
+
+  async function botResponse(userText) {
+
+    try {
+
       conversationHistory.push({
-        role: "assistant",
-        content: data.reply
+
+        role: "user",
+
+        content: userText
+
       });
 
-      appendMessage(data.reply, false);
-    } else {
-      appendMessage("Ich konnte gerade keine Antwort erstellen.", false);
-    }
+      const response = await fetch("https://how2cai-backend.onrender.com/chat", {
 
-  } catch (error) {
-    appendMessage("Der KI-Chat ist gerade nicht erreichbar.", false);
-  }
-}
+        method: "POST",
 
-    const data = await response.json();
+        headers: {
 
-    if (data.reply) {
-      appendMessage(data.reply, false);
-    } else {
-      appendMessage("Ich konnte gerade keine Antwort erstellen.", false);
-    }
+          "Content-Type": "application/json"
 
-  } catch (error) {
-    appendMessage("Der KI-Chat ist gerade nicht erreichbar.", false);
-  }
-}
+        },
 
-        function sendMessage() {
-            const text = chatInput.value.trim();
-            if (text) {
-                appendMessage(text, true);
-                chatInput.value = '';
-                botResponse(text);
-                suggestedChips.style.opacity = '0.5';
-                suggestedChips.style.pointerEvents = 'none';
-            }
-        }
+        body: JSON.stringify({
 
-        function sendPredefined(text) {
-            appendMessage(text, true);
-            botResponse(text);
-            suggestedChips.style.opacity = '0.5';
-            suggestedChips.style.pointerEvents = 'none';
-        }
+          messages: conversationHistory
 
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
+        })
+
+      });
+
+      const data = await response.json();
+
+      if (data.reply) {
+
+        conversationHistory.push({
+
+          role: "assistant",
+
+          content: data.reply
+
         });
-    </script>
+
+        appendMessage(data.reply, false);
+
+      } else {
+
+        appendMessage("Ich konnte gerade keine Antwort erstellen.", false);
+
+      }
+
+    } catch (error) {
+
+      appendMessage("Der KI-Chat ist gerade nicht erreichbar.", false);
+
+    }
+
+  }
+
+  function sendMessage() {
+
+    const text = chatInput.value.trim();
+
+    if (text) {
+
+      appendMessage(text, true);
+
+      chatInput.value = '';
+
+      botResponse(text);
+
+      suggestedChips.style.opacity = '0.5';
+
+      suggestedChips.style.pointerEvents = 'none';
+
+    }
+
+  }
+
+  function sendPredefined(text) {
+
+    appendMessage(text, true);
+
+    botResponse(text);
+
+    suggestedChips.style.opacity = '0.5';
+
+    suggestedChips.style.pointerEvents = 'none';
+
+  }
+
+  chatInput.addEventListener('keypress', (e) => {
+
+    if (e.key === 'Enter') sendMessage();
+
+  });
+
+</script>
 
 
 </body></html>
