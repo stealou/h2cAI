@@ -300,7 +300,6 @@
 </div>
 </footer>
 <!-- Chat Logic -->
-
 <script>
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
@@ -318,18 +317,25 @@
 
   function appendMessage(text, isUser = false) {
     const wrapper = document.createElement('div');
-    wrapper.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
+
+    wrapper.className =
+      `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
 
     const bubble = document.createElement('div');
+
     bubble.className = isUser
       ? 'bg-secondary-fixed text-on-secondary-container p-md rounded-[16px] rounded-tr-none font-body-md text-body-md shadow-sm'
       : 'bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md border border-outline-variant/10';
 
     bubble.innerText = text;
+
     wrapper.appendChild(bubble);
     chatMessages.appendChild(wrapper);
 
-    chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    chatMessages.scrollTo({
+      top: chatMessages.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 
   async function botResponse(userText) {
