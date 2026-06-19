@@ -164,11 +164,6 @@
 
       <!-- Chat Messages -->
       <div class="flex-1 overflow-y-auto p-md space-y-md chat-scroll" id="chat-messages">
-        <div class="flex flex-col items-start max-w-[85%]">
-          <div class="bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md">
-            Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.
-          </div>
-        </div>
       </div>
 
       <!-- Suggested Chips -->
@@ -443,14 +438,25 @@ function clearChat() {
   }
 window.onload = () => {
 
-  conversationHistory.forEach(msg => {
+  if (conversationHistory.length === 0) {
 
     appendMessage(
-      msg.content,
-      msg.role === "user"
+      "Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.",
+      false
     );
 
-  });
+  } else {
+
+    conversationHistory.forEach(msg => {
+
+      appendMessage(
+        msg.content,
+        msg.role === "user"
+      );
+
+    });
+
+  }
 
 };
   chatInput.addEventListener('keypress', (e) => {
