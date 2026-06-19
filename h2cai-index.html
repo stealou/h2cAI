@@ -302,169 +302,120 @@
 <!-- Chat Logic -->
 
 <script>
-
   const chatMessages = document.getElementById('chat-messages');
-
   const chatInput = document.getElementById('chat-input');
-
   const suggestedChips = document.getElementById('suggested-chips');
 
   let conversationHistory =
-  JSON.parse(localStorage.getItem("conversationHistory")) || [];
+    JSON.parse(localStorage.getItem("conversationHistory")) || [];
+
+  function saveChat() {
+    localStorage.setItem(
+      "conversationHistory",
+      JSON.stringify(conversationHistory)
+    );
+  }
 
   function appendMessage(text, isUser = false) {
-        function saveChat() {
-  localStorage.setItem(
-    "conversationHistory",
-    JSON.stringify(conversationHistory)
-  );
-}
-
     const wrapper = document.createElement('div');
-
     wrapper.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] ${isUser ? 'ml-auto' : ''}`;
 
     const bubble = document.createElement('div');
-
     bubble.className = isUser
-
       ? 'bg-secondary-fixed text-on-secondary-container p-md rounded-[16px] rounded-tr-none font-body-md text-body-md shadow-sm'
-
       : 'bg-primary-fixed-dim/20 text-on-surface p-md rounded-[16px] rounded-tl-none font-body-md text-body-md border border-outline-variant/10';
 
     bubble.innerText = text;
-
     wrapper.appendChild(bubble);
-
     chatMessages.appendChild(wrapper);
 
     chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-
   }
 
   async function botResponse(userText) {
-
     try {
-
       conversationHistory.push({
-
         role: "user",
-
         content: userText
-
       });
-saveChat();
+
+      saveChat();
+
       const response = await fetch("https://how2cai-backend.onrender.com/chat", {
-
         method: "POST",
-
         headers: {
-  "Content-Type": "application/json",
-  "x-frontend-secret": "13a637d17f4139b7288b14a653b3cc59"
-},
-
+          "Content-Type": "application/json",
+          "x-frontend-secret": "13a637d17f4139b7288b14a653b3cc59"
+        },
         body: JSON.stringify({
-
           messages: conversationHistory
-
         })
-
       });
 
       const data = await response.json();
 
       if (data.reply) {
-
         conversationHistory.push({
-
           role: "assistant",
-
           content: data.reply
-
         });
-saveChat();
+
+        saveChat();
         appendMessage(data.reply, false);
-
       } else {
-
         appendMessage("Ich konnte gerade keine Antwort erstellen.", false);
-
       }
 
     } catch (error) {
-
       appendMessage("Der KI-Chat ist gerade nicht erreichbar.", false);
-
     }
-
   }
 
   function sendMessage() {
-
     const text = chatInput.value.trim();
 
     if (text) {
-
       appendMessage(text, true);
-
       chatInput.value = '';
-
       botResponse(text);
 
       suggestedChips.style.opacity = '0.5';
-
       suggestedChips.style.pointerEvents = 'none';
-
     }
-function clearChat() {
-
-  localStorage.removeItem("conversationHistory");
-
-  location.reload();
-
-}
   }
 
   function sendPredefined(text) {
-
     appendMessage(text, true);
-
     botResponse(text);
 
     suggestedChips.style.opacity = '0.5';
-
     suggestedChips.style.pointerEvents = 'none';
-
   }
-window.onload = () => {
 
-  if (conversationHistory.length === 0) {
+  function clearChat() {
+    localStorage.removeItem("conversationHistory");
+    location.reload();
+  }
 
-    appendMessage(
-      "Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.",
-      false
-    );
-
-  } else {
-
-    conversationHistory.forEach(msg => {
-
+  window.onload = () => {
+    if (conversationHistory.length === 0) {
       appendMessage(
-        msg.content,
-        msg.role === "user"
+        "Hi, ich helfe dir dabei, mehr Klarheit über deinen beruflichen Weg zu finden.",
+        false
       );
+    } else {
+      conversationHistory.forEach(msg => {
+        appendMessage(
+          msg.content,
+          msg.role === "user"
+        );
+      });
+    }
+  };
 
-    });
-
-  }
-
-};
   chatInput.addEventListener('keypress', (e) => {
-
     if (e.key === 'Enter') sendMessage();
-
   });
-
 </script>
 
 
